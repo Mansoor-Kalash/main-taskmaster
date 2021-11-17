@@ -4,6 +4,12 @@
 
 ## Language -- Java --
 
+## class 
+* "Taska" as a model.
+
+* "TasksAdapter"
+
+
 ## Activity
 
 * MainActivity
@@ -70,4 +76,34 @@ to put the title that pass
 ![](10.png)
 
 ![](11.png)
+----------------------
+## lab 28 
+work in RecycleView to scroll in tasks 
+and target the task that user click on it then move to TaskDetailActivity with the data for this task.
+ 
+ ## Work in screenshote
 
+## main activity with username
+
+![](12.1.png)
+
+## scroll
+
+![](12.png)
+
+## task1 whith state "new"
+
+![](13.png)
+
+## task2 whith state "assigned"
+
+![](14.png)
+
+## task3 whith state "in progress"
+
+![](15.png)
+
+## task4 whith state "complete"
+
+
+![](16.png)
