@@ -19,7 +19,7 @@ public interface TaskDao {
 @Insert
 void insert(Tasks tasks);
 
-        @Query("SELECT * FROM tasks ORDER BY id DESC")
+        @Query("SELECT * FROM tasks")
     List<Tasks> getAllTasks();
 
-}
+    }

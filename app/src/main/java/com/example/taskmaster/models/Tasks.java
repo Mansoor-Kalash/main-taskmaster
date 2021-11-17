@@ -1,5 +1,6 @@
 package com.example.taskmaster.models;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -7,8 +8,11 @@ import androidx.room.PrimaryKey;
 public class Tasks {
     @PrimaryKey(autoGenerate = true)
     private int id;
+    @ColumnInfo(name = "title")
     private String title;
+    @ColumnInfo(name = "body")
     private String body;
+    @ColumnInfo(name = "state")
     private String state;
 
     public Tasks(String title, String body, String state) {
