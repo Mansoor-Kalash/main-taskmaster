@@ -2,7 +2,6 @@ package com.example.taskmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -10,19 +9,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class TaskDetailPage extends AppCompatActivity {
-private TextView textView;
+private TextView title;
+private TextView body;
+private TextView state;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_detail_page);
-        textView = (TextView) findViewById(R.id.title);
+        title = (TextView) findViewById(R.id.title);
+        body = (TextView) findViewById(R.id.body);
+        state = (TextView) findViewById(R.id.state);
 //        Intent intent =
         String title =  getIntent().getExtras().get("title").toString();
-        putTitle(title);
+        String body =  getIntent().getExtras().get("body").toString();
+        String state =  getIntent().getExtras().get("state").toString();
+
+        putTitle(title,body,state);
 
     }
-    public void putTitle(String title){
-        textView.setText(title);
+    public void putTitle(String title,String body, String state){
+        this.title.setText(title);
+        this.body.setText(body);
+        this.state.setText(state);
     }
     @Override
     protected void onResume() {

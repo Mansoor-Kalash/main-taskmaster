@@ -1,24 +1,45 @@
 package com.example.taskmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-private Button addTask;
-private Button allTask;
+import com.example.taskmaster.models.Tasks;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+    private List<Tasks> allTasks = new ArrayList<Tasks>();
+
+    private Button addTask;
+    private Button allTask;
+    private RecyclerView recyclerView;
+    private TasksAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        createTasksList();
+        buildRecyclerView();
+        setAllTasksOnClickListener();
+
         addTask = (Button) findViewById(R.id.addTask);
         allTask = (Button) findViewById(R.id.allTask);
-        Button task1 = (Button) findViewById(R.id.task1);
-        Button task2 = (Button) findViewById(R.id.task2);
-        Button task3 = (Button) findViewById(R.id.task3);
+
+
         Button setting = (Button) findViewById(R.id.setting);
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,33 +60,76 @@ private Button allTask;
                 allTaskActivity();
             }
         });
-        task1.setOnClickListener(this);
-        task2.setOnClickListener(this);
-        task3.setOnClickListener(this);
+
 
     }
-    public void addTaskActivity(){
-        Intent intent = new Intent(this,AddTask.class);
-        startActivity(intent);
-    }
-    public void allTaskActivity(){
-        Intent intent = new Intent(this,AllTask.class);
+
+    public void addTaskActivity() {
+        Intent intent = new Intent(this, AddTask.class);
         startActivity(intent);
     }
 
-    @Override
-    public void onClick(View v) {
-       Button task = (Button) findViewById(v.getId());
-       String title = task.getText().toString();
-       openTaskDetails(title);
-    }
-    public void openTaskDetails(String title){
-        Intent intent = new Intent(this,TaskDetailPage.class);
-        intent.putExtra("title",title);
+    public void allTaskActivity() {
+        Intent intent = new Intent(this, AllTask.class);
         startActivity(intent);
     }
-    public void openSettingPage(){
-        Intent intent = new Intent(this,SettingsPage.class);
+
+
+    public void openSettingPage() {
+        Intent intent = new Intent(this, SettingsPage.class);
         startActivity(intent);
     }
+
+
+    public void openTaskDetails(String title,String body, String state) {
+        Intent intent = new Intent(this, TaskDetailPage.class);
+        intent.putExtra("title", title);
+        intent.putExtra("body", body);
+        intent.putExtra("state", state);
+
+
+        startActivity(intent);
+    }
+
+    public void createTasksList() {
+        allTasks.add(new Tasks("task1","steps you will likely want to take to accomplis","new"));
+        allTasks.add(new Tasks("task2","refactor your homepage to look snazzy","assigned"));
+        allTasks.add(new Tasks("task3","addition to sending the Task title to the detail page","in progress"));
+        allTasks.add(new Tasks("task4","ch the detail page with the correct Tas","complete"));
+        allTasks.add(new Tasks("task5","opulate your RecyclerView/ViewAdap","assigned"));
+        allTasks.add(new Tasks("task6","an tap on any one of the Tasks in the R","new"));
+    }
+
+    public void buildRecyclerView() {
+
+        recyclerView = findViewById(R.id.recucler);
+        recyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new TasksAdapter(allTasks);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(mAdapter);
+
+
+    }
+
+    public void setAllTasksOnClickListener() {
+        mAdapter.setOnItemClickListener(new TasksAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Tasks task = allTasks.get(position);
+
+                openTaskDetails(task.getTitle(),task.getBody(),task.getState());
+
+            }
+        });
+    }
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        String userName = sharedPreferences.getString("userName","the user didn't add a name yet!");
+        TextView user = findViewById(R.id.username);
+        user.setText(userName);
+
+    }
+
 }
