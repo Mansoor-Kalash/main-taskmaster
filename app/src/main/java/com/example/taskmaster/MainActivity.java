@@ -1,6 +1,9 @@
 package com.example.taskmaster;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,14 +14,19 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.taskmaster.Repo.TaskDao;
 import com.example.taskmaster.models.Tasks;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     private List<Tasks> allTasks = new ArrayList<Tasks>();
+//    private TaskViewModel taskViewModel;
+    TaskDao taskDao;
 
     private Button addTask;
     private Button allTask;
@@ -35,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
         createTasksList();
         buildRecyclerView();
         setAllTasksOnClickListener();
+
+
+//        buildRecyclerView();
+
+
+
 
         addTask = (Button) findViewById(R.id.addTask);
         allTask = (Button) findViewById(R.id.allTask);
@@ -92,12 +106,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createTasksList() {
-        allTasks.add(new Tasks("task1","steps you will likely want to take to accomplis","new"));
-        allTasks.add(new Tasks("task2","refactor your homepage to look snazzy","assigned"));
-        allTasks.add(new Tasks("task3","addition to sending the Task title to the detail page","in progress"));
-        allTasks.add(new Tasks("task4","ch the detail page with the correct Tas","complete"));
-        allTasks.add(new Tasks("task5","opulate your RecyclerView/ViewAdap","assigned"));
-        allTasks.add(new Tasks("task6","an tap on any one of the Tasks in the R","new"));
+//        allTasks.add(new Tasks("task1","steps you will likely want to take to accomplis","new"));
+//        allTasks.add(new Tasks("task2","refactor your homepage to look snazzy","assigned"));
+//        allTasks.add(new Tasks("task3","addition to sending the Task title to the detail page","in progress"));
+//        allTasks.add(new Tasks("task4","ch the detail page with the correct Tas","complete"));
+//        allTasks.add(new Tasks("task5","opulate your RecyclerView/ViewAdap","assigned"));
+//        allTasks.add(new Tasks("task6","an tap on any one of the Tasks in the R","new"));
+//        allTasks=
+        allTasks = taskDao.getAllTasks();
     }
 
     public void buildRecyclerView() {
@@ -108,8 +124,22 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new TasksAdapter(allTasks);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
+//        RecyclerView recyclerView = findViewById(R.id.recucler);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setHasFixedSize(true);
 
+//        final TasksAdapter tasksAdapter = new TasksAdapter();
+//        recyclerView.setAdapter(mAdapter);
 
+//        taskViewModel = ViewModelProviders.of(this).get(TaskViewModel.class);
+//        taskViewModel.getAllTask().observe(this, new Observer<List<Tasks>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Tasks> tasks) {
+//                mAdapter.setAllTasks(tasks);
+//            }
+//        });
+//
+//
     }
 
     public void setAllTasksOnClickListener() {

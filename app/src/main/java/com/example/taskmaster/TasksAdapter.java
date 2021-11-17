@@ -17,6 +17,7 @@ import java.util.List;
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHolder> {
     List<Tasks> allTasks = new ArrayList<Tasks>();
 
+
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
@@ -81,5 +82,9 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
         return allTasks.size();
     }
 
+    public void setAllTasks(List<Tasks> tasks) {
+        this.allTasks = tasks;
+        notifyDataSetChanged();
+    }
 
 }

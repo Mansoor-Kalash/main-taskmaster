@@ -1,6 +1,12 @@
 package com.example.taskmaster.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Tasks {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String title;
     private String body;
     private String state;
@@ -33,5 +39,13 @@ public class Tasks {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
