@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Tasks> allTasks = new ArrayList<Tasks>();
 //    private TaskViewModel taskViewModel;
-    TaskDao taskDao;
+//    TaskDao taskDao;
 
     private Button addTask;
     private Button allTask;
@@ -40,11 +40,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         createTasksList();
-        buildRecyclerView();
         setAllTasksOnClickListener();
 
 
-//        buildRecyclerView();
+
 
 
 
@@ -105,42 +104,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createTasksList() {
-        AppDatabase appDb = AppDatabase.getInstance(getApplicationContext());
-        allTasks.add(new Tasks("task1","steps you will likely want to take to accomplis","new"));
-        allTasks.add(new Tasks("task2","refactor your homepage to look snazzy","assigned"));
-        allTasks.add(new Tasks("task3","addition to sending the Task title to the detail page","in progress"));
-        allTasks.add(new Tasks("task4","ch the detail page with the correct Tas","complete"));
-        allTasks.add(new Tasks("task5","opulate your RecyclerView/ViewAdap","assigned"));
-        allTasks.add(new Tasks("task6","an tap on any one of the Tasks in the R","new"));
-        TaskDao taskDao = appDb.taskDao();
-//        allTasks = taskDao.getAllTasks();
-
-//        AppDatabase appDb = AppDatabase.getInstance(getApplicationContext());
-
-//        allTasks = taskDao.getAllTasks();
-        System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhh"+allTasks.size());
-    }
-
-//    public void createTasksList() {
+        AppDatabase appDb = AppDatabase.getInstance(this.getApplicationContext());
 //        allTasks.add(new Tasks("task1","steps you will likely want to take to accomplis","new"));
 //        allTasks.add(new Tasks("task2","refactor your homepage to look snazzy","assigned"));
 //        allTasks.add(new Tasks("task3","addition to sending the Task title to the detail page","in progress"));
 //        allTasks.add(new Tasks("task4","ch the detail page with the correct Tas","complete"));
 //        allTasks.add(new Tasks("task5","opulate your RecyclerView/ViewAdap","assigned"));
 //        allTasks.add(new Tasks("task6","an tap on any one of the Tasks in the R","new"));
-//    }
-
-    public void buildRecyclerView() {
-
+        TaskDao taskDao = appDb.taskDao();
+//        taskDao.insertAll(new Tasks("task2","refactor your homepage to look snazzy","assigned"));
+        allTasks = taskDao.getAllTasks();
         recyclerView = findViewById(R.id.recucler);
         recyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new TasksAdapter(allTasks);
+
+        mAdapter = new TasksAdapter(taskDao.getAllTasks());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
 
 
     }
+
 
     public void setAllTasksOnClickListener() {
         mAdapter.setOnItemClickListener(new TasksAdapter.OnItemClickListener() {
@@ -155,6 +139,9 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void onResume() {
         super.onResume();
+        createTasksList();
+        setAllTasksOnClickListener();
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         String userName = sharedPreferences.getString("userName","the user didn't add a name yet!");
         TextView user = findViewById(R.id.username);

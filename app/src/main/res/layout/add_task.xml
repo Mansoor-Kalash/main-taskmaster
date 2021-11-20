@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="252dp"
         android:layout_weight="1"
-        android:text="Button"
+        android:text="Submmit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/body" />
+        app:layout_constraintTop_toBottomOf="@+id/body"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/title"
@@ -36,24 +37,40 @@
         android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Task Description"
 
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <EditText
+        android:id="@+id/statusE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+
+        android:hint="Task Status"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/body"
+        app:layout_constraintVertical_bias="0.06" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
         android:text="Add Task"
         app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.371"
-        tools:layout_editor_absoluteX="42dp" />
+        app:layout_constraintVertical_bias="0.606" />
 
     <TextView
         android:id="@+id/submit"
@@ -62,10 +79,10 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.542" />
+        app:layout_constraintVertical_bias="0.629" />
 
     <TextView
         android:id="@+id/total"
@@ -73,7 +90,9 @@
         android:layout_height="wrap_content"
         android:text="Total Task:0"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addTask"
-        app:layout_constraintVertical_bias="0.247"
-        tools:layout_editor_absoluteX="42dp" />
+        app:layout_constraintVertical_bias="0.373" />
 </androidx.constraintlayout.widget.ConstraintLayout>

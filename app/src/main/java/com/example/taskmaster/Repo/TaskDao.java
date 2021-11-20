@@ -16,8 +16,8 @@ public interface TaskDao {
 
         @Insert
         void insertAll(Tasks... tasks);
-@Insert
-void insert(Tasks tasks);
+//@Insert
+//void insert(Tasks tasks);
 
         @Query("SELECT * FROM tasks")
     List<Tasks> getAllTasks();
