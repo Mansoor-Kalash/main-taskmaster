@@ -4,6 +4,13 @@
 
 ## Language -- Java --
 
+## class 
+* "Taska" as a model.
+
+* "TasksAdapter"
+* AppDatabase
+
+
 ## Activity
 
 * MainActivity
@@ -70,4 +77,56 @@ to put the title that pass
 ![](10.png)
 
 ![](11.png)
+----------------------
+## lab 28 
+work in RecycleView to scroll in tasks 
+and target the task that user click on it then move to TaskDetailActivity with the data for this task.
+ 
+ ## Work in screenshote
 
+## main activity with username
+
+![](12.1.png)
+
+## scroll
+
+![](12.png)
+
+## task1 whith state "new"
+
+![](13.png)
+
+## task2 whith state "assigned"
+
+![](14.png)
+
+## task3 whith state "in progress"
+
+![](15.png)
+
+## task4 whith state "complete"
+
+
+![](16.png)
+
+## Work lab 29
+### home page
+![](17.png)
+
+### Scrolll & press in coffee time task
+![](18.png)
+
+### Go to Task Detaile page display informayion about Coffee Time Task.
+![](19.png)
+
+### Back & press in Add Task Button & write a new task & submmit it
+![](20.png)
+
+### Back to Home page will show the new task down of the list
+![](21.png)
+
+
+
+### press in the new task will show you the detaile of the task in Task Detail page.
+
+![](22.png)
