@@ -9,13 +9,14 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.datastore.generated.model.Task;
 import com.example.taskmaster.models.Tasks;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHolder> {
-    List<Tasks> allTasks = new ArrayList<Tasks>();
+    List<Task> allTasks = new ArrayList<Task>();
 
     private OnItemClickListener mListener;
 
@@ -24,7 +25,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
     }
 
 
-    public TasksAdapter(List<Tasks> allTasks) {
+    public TasksAdapter(List<Task> allTasks) {
         this.allTasks = allTasks;
     }
 
@@ -70,7 +71,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
 
     @Override
     public void onBindViewHolder(@NonNull TasksViewHolder holder, int position) {
-        Tasks tasks = allTasks.get(position);
+        Task tasks = allTasks.get(position);
         holder.mTasks.setText(tasks.getTitle());
 
 
