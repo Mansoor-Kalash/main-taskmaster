@@ -10,6 +10,11 @@
 * "TasksAdapter"
 * AppDatabase
 
+## AWS Cloud
+
+* Amplify
+
+* GraphQL
 
 ## Activity
 
@@ -110,6 +115,7 @@ and target the task that user click on it then move to TaskDetailActivity with t
 ![](16.png)
 
 ## Work lab 29
+
 ### home page
 ![](17.png)
 
@@ -130,3 +136,24 @@ and target the task that user click on it then move to TaskDetailActivity with t
 ### press in the new task will show you the detaile of the task in Task Detail page.
 
 ![](22.png)
+
+## Work lab 30
+
+**Dealing with AWS to add Amplify to use GraphQL**
+* use feach data
+
+![](0.1.png)
+
+* Create data.
+
+![](0.2.png)
+
+* feach data after create new data and desplay it in mainActivity.
+
+![](0.3.png)
+
+* display task info.
+
+![](0.4.png)
+
+
