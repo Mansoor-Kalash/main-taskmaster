@@ -156,4 +156,30 @@ and target the task that user click on it then move to TaskDetailActivity with t
 
 ![](0.4.png)
 
+**Related data aws**
+* Hom page
+
+![](aws1.png)
+
+* Task Detail.
+
+![](aws2.png)
+
+* Setting Page (Choose Team)
+
+![](aws3.png)
+
+* Homae Page get Task For Team2.
+
+![](aws4.png)
+* Task Detail.
+![](aws5.png)
+  * Add Task to Team2.
+![](aws7.png)
+    Homae Page After add new Task.
+![](aws9.png)
+
+
+
+
 

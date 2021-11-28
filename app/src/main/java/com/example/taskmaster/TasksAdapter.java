@@ -65,8 +65,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
     @Override
     public TasksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_blank, parent, false);
-        TasksViewHolder tasksViewHolder = new TasksViewHolder(view, mListener);
-        return tasksViewHolder;
+        return new TasksViewHolder(view, mListener);
     }
 
     @Override
@@ -82,5 +81,8 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
         return allTasks.size();
     }
 
-
+    public  void setAllTasks(List<Task> tasks) {
+        this.allTasks = tasks;
+//        notifyDataSetChanged();
+    }
 }
