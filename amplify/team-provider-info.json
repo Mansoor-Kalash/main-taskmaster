@@ -23,6 +23,11 @@
       "StackName": "amplify-maintaskmaster-mansoor-154940",
       "StackId": "arn:aws:cloudformation:us-east-1:034892735905:stack/amplify-maintaskmaster-mansoor-154940/e0e567c0-4f88-11ec-9b7d-0e97f61e76c1",
       "AmplifyAppId": "d25dunpp75fcp1"
+    },
+    "categories": {
+      "auth": {
+        "maintaskmaster66cbfa09": {}
+      }
     }
   }
 }
