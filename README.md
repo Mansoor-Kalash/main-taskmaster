@@ -179,6 +179,16 @@ and target the task that user click on it then move to TaskDetailActivity with t
     Homae Page After add new Task.
 ![](aws9.png)
 
+* Homae Page with sign in Button.
+
+![](auth1.png)
+* after press in sign in will send the user to log in page.
+  ![](auth2.png)
+    * after log in will retutn the user to main page with user name display in top of the page.
+      ![](auth3.png)
+      * press in sign out page will log out the user and appear button to sign in
+      ![](auth4.png)
+
 
 
 
