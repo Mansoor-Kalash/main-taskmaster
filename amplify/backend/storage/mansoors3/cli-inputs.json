@@ -1,0 +1,14 @@
+{
+  "resourceName": "mansoors3",
+  "policyUUID": "3fa8c7b8",
+  "bucketName": "mansoorbukets3",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

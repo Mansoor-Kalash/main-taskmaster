@@ -37,6 +37,7 @@ import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.amplifyframework.datastore.generated.model.Team;
+import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 import com.example.taskmaster.Repo.TaskDao;
 import com.example.taskmaster.models.Tasks;
 
@@ -78,6 +79,7 @@ public  Handler handler= new Handler();
                 // Add these lines to add the AWSApiPlugin plugins
                 Amplify.addPlugin(new AWSApiPlugin());
                 Amplify.addPlugin(new AWSCognitoAuthPlugin());
+                Amplify.addPlugin(new AWSS3StoragePlugin());
                 Amplify.configure(getApplicationContext());
 
                 Log.i("MyAmplifyApp", "Initialized Amplify");
@@ -100,7 +102,24 @@ public  Handler handler= new Handler();
             userNameLog.setText("username:");
             isLogged=1;
         }
+        handler = new Handler(Looper.getMainLooper(),
+                new Handler.Callback() {
+                    @Override
+                    public boolean handleMessage(@NonNull Message message) {
+                        if (message.what==1){
+                            recyclerView.getAdapter().notifyDataSetChanged();
+                            Log.i("inside handler",allTasks.toString());
+                        }else if (message.what==2){
 
+
+                            userNameLog.setText("username: "+ usernameLog);
+
+                            Log.i("userNameHandler",userNameLog.getText().toString());
+                        }
+
+                        return false;
+                    }
+                });
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -282,38 +301,38 @@ handler.sendEmptyMessage(2);
     protected  void onResume(){
         super.onResume();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        String userName = sharedPreferences.getString("userName", "the user didn't add a name yet!");
+        String teamName = sharedPreferences.getString("TeamName", "the user didn't add a name yet!");
         TextView user = findViewById(R.id.username);
-        user.setText(userName);
-        this.teamName = userName;
-        handler = new Handler(Looper.getMainLooper(),
-                new Handler.Callback() {
-                    @Override
-                    public boolean handleMessage(@NonNull Message message) {
-                        if (message.what==1){
-                            recyclerView.getAdapter().notifyDataSetChanged();
-                            Log.i("inside handler",allTasks.toString());
-                        }else if (message.what==2){
-
-
-                            userNameLog.setText("username: "+ usernameLog);
-
-                            Log.i("userNameHandler",userNameLog.getText().toString());
-                        }
-
-                        return false;
-                    }
-                });
+        user.setText(teamName);
+        this.teamName = teamName;
+//        handler = new Handler(Looper.getMainLooper(),
+//                new Handler.Callback() {
+//                    @Override
+//                    public boolean handleMessage(@NonNull Message message) {
+//                        if (message.what==1){
+//                            recyclerView.getAdapter().notifyDataSetChanged();
+//                            Log.i("inside handler",allTasks.toString());
+//                        }else if (message.what==2){
+//
+//
+//                            userNameLog.setText("username: "+ usernameLog);
+//
+//                            Log.i("userNameHandler",userNameLog.getText().toString());
+//                        }
+//
+//                        return false;
+//                    }
+//                });
         setIsLogged();
 
         createTasksList();
         Log.i("track","after Create Liste");
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         if (isLogged==0){
             userNameLog.setText("username: ");
         }else if(isLogged == 1){

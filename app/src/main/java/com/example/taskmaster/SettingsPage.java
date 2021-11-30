@@ -39,9 +39,9 @@ private RadioButton radioButton;
     }
     public void shareUserName(){
 //        String user = username.getText().toString();
-        String user = radioButton.getText().toString();
+        String teamName = radioButton.getText().toString();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SettingsPage.this);
-        sharedPreferences.edit().putString("userName",user).apply();
+        sharedPreferences.edit().putString("teamName",teamName).apply();
         Toast.makeText(SettingsPage.this,"submitted!", Toast.LENGTH_LONG).show();
     }
 }
